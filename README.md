@@ -1,8 +1,10 @@
 # books
-Please email us at books@klaxolabs.com with questions regarding orders and books.
-All books listed are brand new & unread unless otherwise indicated.
-We are happy to provide photos of the condition of books for serious inquiries.
+Please email us at <i>books@klaxolabs.com</i> with questions regarding orders and books. <br>
+All books listed are brand new & unread unless otherwise indicated. <br>
+We are happy to provide photos of the condition of books for serious inquiries. <br>
 
-Immortal by Sue Lynn Tan (ARC)
-Our Infinite Fates by Laura Steven (ARC)
-Witchcraft for Wayward Girls by Grady Hendrix (ARC)
+<br>
+
+Immortal by Sue Lynn Tan (ARC) <br>
+Our Infinite Fates by Laura Steven (ARC) <br>
+Witchcraft for Wayward Girls by Grady Hendrix (ARC) <br>
