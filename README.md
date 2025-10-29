@@ -33,10 +33,12 @@ Witchcraft for Wayward Girls by Grady Hendrix (ARC) <br>
   <a href="#L">L</a> ·
   <a href="#M">M</a> ·
   <a href="#O">O</a> ·
+  <a href="#P">P</a> ·
   <a href="#R">R</a> ·
   <a href="#S">S</a> ·
   <a href="#T">T</a> ·
   <a href="#V">V</a> ·
+  <a href="#W">W</a> ·
   <a href="#Y">Y</a>
 </nav>
 
@@ -61,6 +63,7 @@ Witchcraft for Wayward Girls by Grady Hendrix (ARC) <br>
 
 <h3 id="C">C</h3>
 <ul>
+  <li>Prodigal Tiger by Samantha Chong (ARC)</li>
   <li>Unbearable by Irin Carmon (ARC)</li>
   <li>The Monsters We Make by Rachel Corbett (ARC)</li>
   <li>Sharp Force by Patricia Cornwell (ARC)</li>
@@ -89,11 +92,13 @@ Witchcraft for Wayward Girls by Grady Hendrix (ARC) <br>
 
 <h3 id="G">G</h3>
 <ul>
+  <li>Alchemy of Secrets by Stephanie Garber (ARC)</li>
   <li>Poppy State by Myriam Gurba (ARC)</li>
 </ul>
 
 <h3 id="H">H</h3>
 <ul>
+  <li>Before I Forget by Tory Henwood Hoen (ARC)</li>
   <li>Final Orbit by Chris Hadfield (ARC)</li>
   <li>Simultaneous by Eric Heisserer (ARC)</li>
 </ul>
@@ -108,6 +113,8 @@ Witchcraft for Wayward Girls by Grady Hendrix (ARC) <br>
 <h3 id="J">J</h3>
 <ul>
   <li>The People’s Project by Saeed Jones (ARC)</li>
+  <li>The People’s Project by Saeed Jones (ARC)</li>
+  <li>Scream With Me by Eleanor Johnson (ARC)</li>
   <li>A Scar in the Bone by Sophie Jordan (ARC)</li>
 </ul>
 
@@ -122,6 +129,7 @@ Witchcraft for Wayward Girls by Grady Hendrix (ARC) <br>
   <li>The Dead of Summer by Ryan La Sala (ARC)</li>
   <li>Janae Sanders’ Second Time Around by LaQuette (ARC)</li>
   <li>House of Rayne by Harley Laroux (ARC)</li>
+  <li>Joy to the Girls by Lippincott (ARC)</li>
 </ul>
 
 <h3 id="M">M</h3>
@@ -137,8 +145,15 @@ Witchcraft for Wayward Girls by Grady Hendrix (ARC) <br>
   <li>The Lodge by Kayla Olson (ARC)</li>
 </ul>
 
+<h3 id="P">P</h3>
+<ul>
+  <li>Overdue by Stephanie Perkins (ARC)</li>
+  <li>A Treachery of Swans by Poranek (ARC)</li>
+</ul>
+
 <h3 id="R">R</h3>
 <ul>
+  <li>The Seven Rings by Nora Roberts (ARC)</li>
   <li>A Curious Kind of Magic by Mara Rutherford (ARC)</li>
 </ul>
 
@@ -146,8 +161,11 @@ Witchcraft for Wayward Girls by Grady Hendrix (ARC) <br>
 <ul>
   <li>The Woman’s Orchestra of Auschwitz by Anne Sebba (ARC)</li>
   <li>59 Minutes by Holly Seddon (ARC)</li>
+  <li>59 Minutes by Holly Seddon (ARC)</li>
   <li>Royal Spin by Omid Scobie (ARC)</li>
   <li>The Only Sound Is the Wind by Pascha Sotolongo (ARC)</li>
+  <li>Town &amp; Country by Brian Schaefer (ARC)</li>
+  <li>Away Game by Smith (ARC)</li>
 </ul>
 
 <h3 id="T">T</h3>
@@ -160,6 +178,12 @@ Witchcraft for Wayward Girls by Grady Hendrix (ARC) <br>
 <ul>
   <li>The El by Theodore C. Van Alst Jr. (ARC)</li>
   <li>The Dinner Party by Viola van de Sandt (ARC)</li>
+</ul>
+
+<h3 id="W">W</h3>
+<ul>
+  <li>North to the Future by Ben Weissenbach (ARC)</li>
+  <li>The Pelican Child by Joy Williams (ARC)</li>
 </ul>
 
 <h3 id="Y">Y</h3>
