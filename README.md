@@ -15,6 +15,7 @@ Witchcraft for Wayward Girls by Grady Hendrix (ARC) <br>
 
 <div id="top"></div>
 
+<p><strong>Total books: 130</strong></p>
 <h2>ARCs — Grouped by Author (First Author Only)</h2>
 
 <h3 id="A">A</h3>
