@@ -26,7 +26,6 @@ body {
   padding: 0 1rem 3rem;
 }
 .container { max-width: 1100px; margin: 0 auto; }
-#top-anchor { position: absolute; top: 0; }
 header {
   position: sticky;
   top: 0;
@@ -59,14 +58,37 @@ header .meta { font-size: .95rem; color: var(--muted); }
   background: #fff;
   box-shadow: var(--shadow);
 }
-.alpha-nav a:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+.alpha-nav a:hover { border-color: var(--accent); color: var(--accent); }
+
+.searchbar {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: .8rem;
 }
+.searchbar input[type="search"] {
+  width: 100%;
+  max-width: 520px;
+  padding: .6rem .8rem;
+  font-size: 1rem;
+  border-radius: .6rem;
+  border: 1px solid var(--border);
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.searchbar button {
+  padding: .55rem .8rem;
+  border-radius: .6rem;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+}
+.searchbar button:hover { border-color: var(--accent); color: var(--accent); }
+
 section.group {
   margin: 2rem 0 0;
   padding-top: 1rem;
-  scroll-margin-top: 5.5rem; /* for sticky header */
+  scroll-margin-top: 6.5rem; /* align with sticky header + search */
   border-top: 1px dashed var(--border);
 }
 h3.group-title {
@@ -75,9 +97,18 @@ h3.group-title {
   letter-spacing: .02em;
 }
 .group .count { color: var(--muted); font-size: .95rem; margin-left: .3rem; }
-ul.books { list-style: none; padding: 0; margin: .2rem 0 0; columns: 1; column-gap: 2rem; }
+
+ul.books {
+  list-style: none;
+  padding: 0;
+  margin: .2rem 0 0;
+  columns: 1;
+  column-gap: 2rem;
+}
 @media (min-width: 700px) { ul.books { columns: 2; } }
 @media (min-width: 1000px) { ul.books { columns: 3; } }
+@media (min-width: 1280px) { ul.books { columns: 4; } }
+
 ul.books li {
   break-inside: avoid;
   margin: .25rem 0;
@@ -87,6 +118,7 @@ ul.books li {
   border-radius: .6rem;
   box-shadow: var(--shadow);
 }
+
 .back-to-top {
   margin-top: .7rem;
   display: inline-block;
@@ -95,6 +127,7 @@ ul.books li {
   text-decoration: none;
 }
 .back-to-top:hover { color: var(--link); }
+
 footer {
   margin-top: 2.5rem;
   border-top: 1px solid var(--border);
@@ -102,589 +135,649 @@ footer {
   color: var(--muted);
   font-size: .9rem;
 }
+
+.hidden { display: none !important; }
+.counts { font-variant-numeric: tabular-nums; }
 </style>
 
 <body>
-<div id="top-anchor"></div>
 <div class="container">
   <header id="top">
     <h1>ARCs — Grouped by Author (First Author Only)</h1>
-    <div class="meta"><strong>Total books: 413</strong></div>
+    <div class="meta counts">
+      <strong>Total books: <span id="total-count">0</span></strong>
+      &nbsp;|&nbsp; Visible: <span id="visible-count">0</span>
+    </div>
+    <div class="searchbar">
+      <input id="search" type="search" placeholder="Search titles or authors…" aria-label="Filter books" />
+      <button id="clear-search" type="button" aria-label="Clear search">Clear</button>
+    </div>
     <nav class="alpha-nav" aria-label="Alphabetical navigation">
       <a href="#A" aria-label="Jump to group A">A</a> <a href="#B" aria-label="Jump to group B">B</a> <a href="#C" aria-label="Jump to group C">C</a> <a href="#D" aria-label="Jump to group D">D</a> <a href="#E" aria-label="Jump to group E">E</a> <a href="#F" aria-label="Jump to group F">F</a> <a href="#G" aria-label="Jump to group G">G</a> <a href="#H" aria-label="Jump to group H">H</a> <a href="#I" aria-label="Jump to group I">I</a> <a href="#J" aria-label="Jump to group J">J</a> <a href="#K" aria-label="Jump to group K">K</a> <a href="#L" aria-label="Jump to group L">L</a> <a href="#M" aria-label="Jump to group M">M</a> <a href="#N" aria-label="Jump to group N">N</a> <a href="#O" aria-label="Jump to group O">O</a> <a href="#P" aria-label="Jump to group P">P</a> <a href="#R" aria-label="Jump to group R">R</a> <a href="#S" aria-label="Jump to group S">S</a> <a href="#T" aria-label="Jump to group T">T</a> <a href="#U" aria-label="Jump to group U">U</a> <a href="#V" aria-label="Jump to group V">V</a> <a href="#W" aria-label="Jump to group W">W</a> <a href="#Y" aria-label="Jump to group Y">Y</a>
     </nav>
   </header>
 
-  <section class="group" id="A">
-  <h3 class="group-title">A <span class="count">(16)</span></h3>
+  <section class="group" id="A" data-group="A">
+  <h3 class="group-title">A <span class="count counts" id="count-A">(20)</span></h3>
   <ul class="books">
-  <li>Come As You Are by Dahlia Adler</li>
-  <li>The Flower Sisters by Nicole Alexander</li>
-  <li>Bitter Crop by Paul Alexander</li>
-  <li>I Dream of Joni by Henry Alford</li>
-  <li>Pieces You&#x27;ll Never Get Back by Sanina Ali</li>
-  <li>Likeable Badass by Alison Fragale, PhD</li>
-  <li>In France Profound by T. D. Allman</li>
-  <li>I&#x27;ll Tell You When I&#x27;m Home by Hala Alyan</li>
-  <li>I&#x27;ll Tell You When I&#x27;m Home by Hala Alyan</li>
-  <li>Zetas Till We Die by Amber</li>
-  <li>Says Who? by Anne Curzan, Ph.D.</li>
-  <li>Didion &amp; Babitz by Lili Anolik</li>
-  <li>Briefly, Perfectly Human by Alua Arthur</li>
-  <li>This Great Hemisphere by Mateo Askaripour</li>
-  <li>Ask a Matchmaker by Maria Avgitidis</li>
-  <li>We Love You, Bunny by Mona Awad</li>
+  <li class="book-item" data-group="A">Come As You Are by Dahlia Adler</li>
+  <li class="book-item" data-group="A">The Flower Sisters by Nicole Alexander</li>
+  <li class="book-item" data-group="A">Bitter Crop by Paul Alexander</li>
+  <li class="book-item" data-group="A">I Dream of Joni by Henry Alford</li>
+  <li class="book-item" data-group="A">Pieces You&#x27;ll Never Get Back by Sanina Ali</li>
+  <li class="book-item" data-group="A">Likeable Badass by Alison Fragale, PhD</li>
+  <li class="book-item" data-group="A">In France Profound by T. D. Allman</li>
+  <li class="book-item" data-group="A">I&#x27;ll Tell You When I&#x27;m Home by Hala Alyan</li>
+  <li class="book-item" data-group="A">I&#x27;ll Tell You When I&#x27;m Home by Hala Alyan</li>
+  <li class="book-item" data-group="A">Zetas Till We Die by Amber</li>
+  <li class="book-item" data-group="A">How to Be a Living Thing by Mari Andrew</li>
+  <li class="book-item" data-group="A">For Duck&#x27;s Sake by Donna Andrews</li>
+  <li class="book-item" data-group="A">The Ever Queen by L.J. Andrews</li>
+  <li class="book-item" data-group="A">Says Who? by Anne Curzan, Ph.D.</li>
+  <li class="book-item" data-group="A">Didion &amp; Babitz by Lili Anolik</li>
+  <li class="book-item" data-group="A">The Devil in Oxford by Jess Armstrong</li>
+  <li class="book-item" data-group="A">Briefly, Perfectly Human by Alua Arthur</li>
+  <li class="book-item" data-group="A">This Great Hemisphere by Mateo Askaripour</li>
+  <li class="book-item" data-group="A">Ask a Matchmaker by Maria Avgitidis</li>
+  <li class="book-item" data-group="A">We Love You, Bunny by Mona Awad</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="B">
-  <h3 class="group-title">B <span class="count">(27)</span></h3>
+<section class="group" id="B" data-group="B">
+  <h3 class="group-title">B <span class="count counts" id="count-B">(31)</span></h3>
   <ul class="books">
-  <li>Birth of a Dynasty by Chinaza Bado</li>
-  <li>Our Last Wild Days by Anna Bailey</li>
-  <li>Embers of the Hands by Eleanor Barraclough</li>
-  <li>A Bomb Placed Close to the Heart by Nishant Batsha</li>
-  <li>Daughter of Egypt by Marie Benedict</li>
-  <li>The White Guy Dies First by Terry J. Benton-Walker</li>
-  <li>There Are Reasons for This by Nini Berndt</li>
-  <li>The Naming Song by Jedediah Berry</li>
-  <li>The Naming Song by Jedediah Berry</li>
-  <li>Doggerel by Reginald Wayne Betts</li>
-  <li>You Deserve to Be Rich by Rashad Bilal</li>
-  <li>What the Night Brings by Mark Billingham</li>
-  <li>Shopgirls by Jessica Anya Blau</li>
-  <li>The Jackal&#x27;s Mistress by Chris Bohjalian</li>
-  <li>Scavengers by Kathleen Boland</li>
-  <li>Cactus Country by Bossiere</li>
-  <li>Boutwell by Jeffrey Boutwell</li>
-  <li>What Time the Sexton&#x27;s Spade Doth Rust by Alan Bradley</li>
-  <li>Pull by Brennan Spiegel, M.D.</li>
-  <li>The Relationship-Driven Leader by Bridbord</li>
-  <li>Rest in Peaches by Alex Brown</li>
-  <li>So Witches We Became by Polly Bruckenschmidt</li>
-  <li>Leave the Girls Behind by Jacqueline Bublitz</li>
-  <li>Songlight by Buffini</li>
-  <li>Joy Goddess by A&#x27;Lelia Bundles</li>
-  <li>A Promise to Arlette by Serena Burdick</li>
-  <li>With Stars in Her Eyes by Andie Burke</li>
+  <li class="book-item" data-group="B">Birth of a Dynasty by Chinaza Bado</li>
+  <li class="book-item" data-group="B">Our Last Wild Days by Anna Bailey</li>
+  <li class="book-item" data-group="B">Embers of the Hands by Eleanor Barraclough</li>
+  <li class="book-item" data-group="B">Do You Still Talk to Grandma? by Brit Barron</li>
+  <li class="book-item" data-group="B">A Bomb Placed Close to the Heart by Nishant Batsha</li>
+  <li class="book-item" data-group="B">The Memory Dress by Jade Beer</li>
+  <li class="book-item" data-group="B">Daughter of Egypt by Marie Benedict</li>
+  <li class="book-item" data-group="B">The White Guy Dies First by Terry J. Benton-Walker</li>
+  <li class="book-item" data-group="B">There Are Reasons for This by Nini Berndt</li>
+  <li class="book-item" data-group="B">The Naming Song by Jedediah Berry</li>
+  <li class="book-item" data-group="B">The Naming Song by Jedediah Berry</li>
+  <li class="book-item" data-group="B">Doggerel by Reginald Wayne Betts</li>
+  <li class="book-item" data-group="B">You Deserve to Be Rich by Rashad Bilal</li>
+  <li class="book-item" data-group="B">What the Night Brings by Mark Billingham</li>
+  <li class="book-item" data-group="B">Shopgirls by Jessica Anya Blau</li>
+  <li class="book-item" data-group="B">The Jackal&#x27;s Mistress by Chris Bohjalian</li>
+  <li class="book-item" data-group="B">Scavengers by Kathleen Boland</li>
+  <li class="book-item" data-group="B">Good Spirits by B.K. Borison</li>
+  <li class="book-item" data-group="B">Cactus Country by Bossiere</li>
+  <li class="book-item" data-group="B">Boutwell by Jeffrey Boutwell</li>
+  <li class="book-item" data-group="B">What Time the Sexton&#x27;s Spade Doth Rust by Alan Bradley</li>
+  <li class="book-item" data-group="B">Pull by Brennan Spiegel, M.D.</li>
+  <li class="book-item" data-group="B">The Relationship-Driven Leader by Bridbord</li>
+  <li class="book-item" data-group="B">Rest in Peaches by Alex Brown</li>
+  <li class="book-item" data-group="B">Wolvers by Taylor Brown</li>
+  <li class="book-item" data-group="B">So Witches We Became by Polly Bruckenschmidt</li>
+  <li class="book-item" data-group="B">Leave the Girls Behind by Jacqueline Bublitz</li>
+  <li class="book-item" data-group="B">Songlight by Buffini</li>
+  <li class="book-item" data-group="B">Joy Goddess by A&#x27;Lelia Bundles</li>
+  <li class="book-item" data-group="B">A Promise to Arlette by Serena Burdick</li>
+  <li class="book-item" data-group="B">With Stars in Her Eyes by Andie Burke</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="C">
-  <h3 class="group-title">C <span class="count">(37)</span></h3>
+<section class="group" id="C" data-group="C">
+  <h3 class="group-title">C <span class="count counts" id="count-C">(40)</span></h3>
   <ul class="books">
-  <li>Crush by Ada Calhoun</li>
-  <li>In the Blink of an Eye by Jo Callaghan</li>
-  <li>Open Socrates by Agnes Callard</li>
-  <li>Bad River by Marc Cameron</li>
-  <li>The Lake&#x27;s Water Is Never Sweet by Giulia Caminito</li>
-  <li>Babylonia by Costanza Casati</li>
-  <li>The Resilience Myth by Sarah Castillo</li>
-  <li>The Payback by Kashana Cauley</li>
-  <li>Fifty-Fifty by Steve Cavanagh</li>
-  <li>Witness 8 by Steve Cavanagh</li>
-  <li>The Rom-Commers by Katherine Center</li>
-  <li>Shy Creatures by Clare Chambers</li>
-  <li>Backhanded Compliments by Katie Chandler</li>
-  <li>Snowy Day and Other Stories by Lee Chang-Dong</li>
-  <li>Miss Morgan&#x27;s Book Brigade by Janet Skeslien Charles</li>
-  <li>Becoming Ghost by Cathlyn Jinh Che</li>
-  <li>Becoming Ghost by Cathlyn Jinh Che</li>
-  <li>The Sound of Us by Soraya Chemaly</li>
-  <li>Their Divine Fires by Wendy Chen</li>
-  <li>The Horse by the Cemetery by Lisa Childs</li>
-  <li>The Horse by the Cemetery by Lisa Childs</li>
-  <li>Widow&#x27;s Point by Richard Chizmar</li>
-  <li>Prodigal Tiger by Samantha Chong</li>
-  <li>The Lucky Ones by Zara Chowdhary</li>
-  <li>Viewfinder by Jon M. Chu</li>
-  <li>The Scrapbook by Heather Clark</li>
-  <li>Abeni and the Kingdom of Gold by P. Djèlí Clark</li>
-  <li>Metal from Heaven by August Clarke</li>
-  <li>The Silence Factory by Bridget Collins</li>
-  <li>Unloved by Peyton Corinne</li>
-  <li>Bad Nature by Ariel Courage</li>
-  <li>Bad Nature by Ariel Courage</li>
-  <li>Proof by Jon Cowan</li>
-  <li>What Is Wrong With Men by Jessica Crispin</li>
-  <li>As You Wish by Leesa Cross-Smith</li>
-  <li>Speak to Me of Home by Jeanine Cummins</li>
-  <li>The Mayor of Maxwell Street by Alex Cunningham</li>
+  <li class="book-item" data-group="C">Crush by Ada Calhoun</li>
+  <li class="book-item" data-group="C">In the Blink of an Eye by Jo Callaghan</li>
+  <li class="book-item" data-group="C">Open Socrates by Agnes Callard</li>
+  <li class="book-item" data-group="C">Bad River by Marc Cameron</li>
+  <li class="book-item" data-group="C">The Lake&#x27;s Water Is Never Sweet by Giulia Caminito</li>
+  <li class="book-item" data-group="C">Unbearable by Irin Carmon</li>
+  <li class="book-item" data-group="C">Babylonia by Costanza Casati</li>
+  <li class="book-item" data-group="C">The Resilience Myth by Sarah Castillo</li>
+  <li class="book-item" data-group="C">The Payback by Kashana Cauley</li>
+  <li class="book-item" data-group="C">Fifty-Fifty by Steve Cavanagh</li>
+  <li class="book-item" data-group="C">Witness 8 by Steve Cavanagh</li>
+  <li class="book-item" data-group="C">The Rom-Commers by Katherine Center</li>
+  <li class="book-item" data-group="C">Shy Creatures by Clare Chambers</li>
+  <li class="book-item" data-group="C">Backhanded Compliments by Katie Chandler</li>
+  <li class="book-item" data-group="C">Snowy Day and Other Stories by Lee Chang-Dong</li>
+  <li class="book-item" data-group="C">Miss Morgan&#x27;s Book Brigade by Janet Skeslien Charles</li>
+  <li class="book-item" data-group="C">Becoming Ghost by Cathlyn Jinh Che</li>
+  <li class="book-item" data-group="C">Becoming Ghost by Cathlyn Jinh Che</li>
+  <li class="book-item" data-group="C">The Sound of Us by Soraya Chemaly</li>
+  <li class="book-item" data-group="C">Their Divine Fires by Wendy Chen</li>
+  <li class="book-item" data-group="C">The Horse by the Cemetery by Lisa Childs</li>
+  <li class="book-item" data-group="C">The Horse by the Cemetery by Lisa Childs</li>
+  <li class="book-item" data-group="C">Widow&#x27;s Point by Richard Chizmar</li>
+  <li class="book-item" data-group="C">Prodigal Tiger by Samantha Chong</li>
+  <li class="book-item" data-group="C">The Lucky Ones by Zara Chowdhary</li>
+  <li class="book-item" data-group="C">Viewfinder by Jon M. Chu</li>
+  <li class="book-item" data-group="C">The Scrapbook by Heather Clark</li>
+  <li class="book-item" data-group="C">Abeni and the Kingdom of Gold by P. Djèlí Clark</li>
+  <li class="book-item" data-group="C">Metal from Heaven by August Clarke</li>
+  <li class="book-item" data-group="C">The Silence Factory by Bridget Collins</li>
+  <li class="book-item" data-group="C">The Monsters We Make by Rachel Corbett</li>
+  <li class="book-item" data-group="C">Unloved by Peyton Corinne</li>
+  <li class="book-item" data-group="C">Sharp Force by Patricia Cornwell</li>
+  <li class="book-item" data-group="C">Bad Nature by Ariel Courage</li>
+  <li class="book-item" data-group="C">Bad Nature by Ariel Courage</li>
+  <li class="book-item" data-group="C">Proof by Jon Cowan</li>
+  <li class="book-item" data-group="C">What Is Wrong With Men by Jessica Crispin</li>
+  <li class="book-item" data-group="C">As You Wish by Leesa Cross-Smith</li>
+  <li class="book-item" data-group="C">Speak to Me of Home by Jeanine Cummins</li>
+  <li class="book-item" data-group="C">The Mayor of Maxwell Street by Alex Cunningham</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="D">
-  <h3 class="group-title">D <span class="count">(21)</span></h3>
+<section class="group" id="D" data-group="D">
+  <h3 class="group-title">D <span class="count counts" id="count-D">(28)</span></h3>
   <ul class="books">
-  <li>The Catch by Ksenia Dailey-Walsh</li>
-  <li>Clear by Carys Davies</li>
-  <li>How to Dodge a Cannonball by Deward Davis</li>
-  <li>The Minor Miracle by Meredith Davis</li>
-  <li>The Prism by Laura Day</li>
-  <li>The Prism by Laura Day</li>
-  <li>The Art of a Lie by Anders De La Motte</li>
-  <li>The Chamber by Will Dean</li>
-  <li>The Chamber by Will Dean</li>
-  <li>Energy Wars by Jodi Dee</li>
-  <li>Eminent Jews by David Denby</li>
-  <li>Joy to the Girls by Lippincott + Derrick</li>
-  <li>Savor It by Tarah Dewitt</li>
-  <li>Favorite Daughter by Morgan Dick</li>
-  <li>Bearer of Bad News by Elisabeth Dini</li>
-  <li>Bearer of Bad News by Elisabeth Dini</li>
-  <li>The Power of Parting by Eamon Dolan</li>
-  <li>The Sweet Blue Distance by Sara Donati</li>
-  <li>Loose Lips by Kemper Donovan</li>
-  <li>Bed and Breakup by Susie Dumond</li>
-  <li>Teddy by Emily Dunlay</li>
+  <li class="book-item" data-group="D">Second Chance Romance by Olivia Dade</li>
+  <li class="book-item" data-group="D">The Catch by Ksenia Dailey-Walsh</li>
+  <li class="book-item" data-group="D">Greta Ever After by Melissa Dassori</li>
+  <li class="book-item" data-group="D">Invisible Strings by Kristie Frederick Daugherty</li>
+  <li class="book-item" data-group="D">Clear by Carys Davies</li>
+  <li class="book-item" data-group="D">How to Dodge a Cannonball by Deward Davis</li>
+  <li class="book-item" data-group="D">The Minor Miracle by Meredith Davis</li>
+  <li class="book-item" data-group="D">The Prism by Laura Day</li>
+  <li class="book-item" data-group="D">The Prism by Laura Day</li>
+  <li class="book-item" data-group="D">The Art of a Lie by Anders De La Motte</li>
+  <li class="book-item" data-group="D">The Chamber by Will Dean</li>
+  <li class="book-item" data-group="D">The Chamber by Will Dean</li>
+  <li class="book-item" data-group="D">The Wives of Hawthorne Lane by Stephanie DeCarolis</li>
+  <li class="book-item" data-group="D">Energy Wars by Jodi Dee</li>
+  <li class="book-item" data-group="D">Eminent Jews by David Denby</li>
+  <li class="book-item" data-group="D">The Executioners Three by Susan Dennard</li>
+  <li class="book-item" data-group="D">Joy to the Girls by Lippincott + Derrick</li>
+  <li class="book-item" data-group="D">Savor It by Tarah Dewitt</li>
+  <li class="book-item" data-group="D">Favorite Daughter by Morgan Dick</li>
+  <li class="book-item" data-group="D">Bearer of Bad News by Elisabeth Dini</li>
+  <li class="book-item" data-group="D">Bearer of Bad News by Elisabeth Dini</li>
+  <li class="book-item" data-group="D">The Power of Parting by Eamon Dolan</li>
+  <li class="book-item" data-group="D">Best Woman by Rose Dommu</li>
+  <li class="book-item" data-group="D">The Sweet Blue Distance by Sara Donati</li>
+  <li class="book-item" data-group="D">Off the Scales by Aimee Donnellan</li>
+  <li class="book-item" data-group="D">Loose Lips by Kemper Donovan</li>
+  <li class="book-item" data-group="D">Bed and Breakup by Susie Dumond</li>
+  <li class="book-item" data-group="D">Teddy by Emily Dunlay</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="E">
-  <h3 class="group-title">E <span class="count">(6)</span></h3>
+<section class="group" id="E" data-group="E">
+  <h3 class="group-title">E <span class="count counts" id="count-E">(7)</span></h3>
   <ul class="books">
-  <li>Clever Little Thing by Helena Echlin</li>
-  <li>Well, Actually by Meryl Eddings</li>
-  <li>Son of the Morning by Akwaeke Emezi</li>
-  <li>One Nation Under Guns by Dominic Erdozain</li>
-  <li>The Poppy Fields by Nikki Erlick</li>
-  <li>The Correspondent by Virginia Evans</li>
+  <li class="book-item" data-group="E">Clever Little Thing by Helena Echlin</li>
+  <li class="book-item" data-group="E">Well, Actually by Meryl Eddings</li>
+  <li class="book-item" data-group="E">Son of the Morning by Akwaeke Emezi</li>
+  <li class="book-item" data-group="E">One Nation Under Guns by Dominic Erdozain</li>
+  <li class="book-item" data-group="E">The Poppy Fields by Nikki Erlick</li>
+  <li class="book-item" data-group="E">The Correspondent by Virginia Evans</li>
+  <li class="book-item" data-group="E">Women of a Promiscuous Nature by Donna Everhart</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="F">
-  <h3 class="group-title">F <span class="count">(11)</span></h3>
+<section class="group" id="F" data-group="F">
+  <h3 class="group-title">F <span class="count counts" id="count-F">(12)</span></h3>
   <ul class="books">
-  <li>What We Value by Emily Falk</li>
-  <li>The Famine Orphans by Patricia Falvey</li>
-  <li>The Break-In by Katherine Faulkner</li>
-  <li>The Dry Season by Melissa Febos</li>
-  <li>The Dry Season by Melissa Febos</li>
-  <li>Joe Nuthin&#x27;s Guide to Life by Helen Fisher</li>
-  <li>The Unwanted by Boris Fishman</li>
-  <li>...and how does that make you feel? by Joshua Fletcher</li>
-  <li>Holy Ground by Catherine Coleman Flowers</li>
-  <li>Heartsick by Kristian Forest</li>
-  <li>Our Last Vineyard Summer by Brooke Lea Foster</li>
+  <li class="book-item" data-group="F">What We Value by Emily Falk</li>
+  <li class="book-item" data-group="F">The Famine Orphans by Patricia Falvey</li>
+  <li class="book-item" data-group="F">House of Monstrous Nomen by Daphne Fama</li>
+  <li class="book-item" data-group="F">The Break-In by Katherine Faulkner</li>
+  <li class="book-item" data-group="F">The Dry Season by Melissa Febos</li>
+  <li class="book-item" data-group="F">The Dry Season by Melissa Febos</li>
+  <li class="book-item" data-group="F">Joe Nuthin&#x27;s Guide to Life by Helen Fisher</li>
+  <li class="book-item" data-group="F">The Unwanted by Boris Fishman</li>
+  <li class="book-item" data-group="F">...and how does that make you feel? by Joshua Fletcher</li>
+  <li class="book-item" data-group="F">Holy Ground by Catherine Coleman Flowers</li>
+  <li class="book-item" data-group="F">Heartsick by Kristian Forest</li>
+  <li class="book-item" data-group="F">Our Last Vineyard Summer by Brooke Lea Foster</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="G">
-  <h3 class="group-title">G <span class="count">(25)</span></h3>
+<section class="group" id="G" data-group="G">
+  <h3 class="group-title">G <span class="count counts" id="count-G">(26)</span></h3>
   <ul class="books">
-  <li>Ex Marks the Spot by Gloria Gao</li>
-  <li>Alchemy of Secrets by Stephanie Garber</li>
-  <li>Tequila Wars by Ted Genoways</li>
-  <li>The Letter Carrier by Francesca Giammone</li>
-  <li>The Dead of Winter by Sarah Gibbs</li>
-  <li>Bad Publicity by Bianca Gillam</li>
-  <li>Burned Bridges by John Gilstrap</li>
-  <li>Burned Bridges by John Gilstrap</li>
-  <li>The Boyhood of Cain by Christina Glancy</li>
-  <li>The Improvisers by Nicole Glover</li>
-  <li>The Improvisers by Nicole Glover</li>
-  <li>Alligator Tears by Edgar Gomez</li>
-  <li>Nobody in Particular by Sophie Gonzales</li>
-  <li>Isola by Allegra Goodman</li>
-  <li>The Frequency of Living Things by Nick Fuller Googins</li>
-  <li>Comfort in Darkness by Rickson Gracie</li>
-  <li>Sons and Daughters by Chaim Grade</li>
-  <li>The Blonde Dies First by Thomas Grattan</li>
-  <li>The Book of George by Kate Greathead</li>
-  <li>Framed by John Grisham</li>
-  <li>Stronger by Michael Joseph Gross</li>
-  <li>Daughters of the Occupation by Rachelle Grossman</li>
-  <li>Cold Storage by Michael C. Grumley</li>
-  <li>Cat&#x27;s People by Tanya Guerrero</li>
-  <li>Ain&#x27;t It Funny by Gurevich</li>
+  <li class="book-item" data-group="G">Ex Marks the Spot by Gloria Gao</li>
+  <li class="book-item" data-group="G">Alchemy of Secrets by Stephanie Garber</li>
+  <li class="book-item" data-group="G">Tequila Wars by Ted Genoways</li>
+  <li class="book-item" data-group="G">The Letter Carrier by Francesca Giammone</li>
+  <li class="book-item" data-group="G">The Dead of Winter by Sarah Gibbs</li>
+  <li class="book-item" data-group="G">Bad Publicity by Bianca Gillam</li>
+  <li class="book-item" data-group="G">Burned Bridges by John Gilstrap</li>
+  <li class="book-item" data-group="G">Burned Bridges by John Gilstrap</li>
+  <li class="book-item" data-group="G">The Boyhood of Cain by Christina Glancy</li>
+  <li class="book-item" data-group="G">The Improvisers by Nicole Glover</li>
+  <li class="book-item" data-group="G">The Improvisers by Nicole Glover</li>
+  <li class="book-item" data-group="G">Alligator Tears by Edgar Gomez</li>
+  <li class="book-item" data-group="G">Nobody in Particular by Sophie Gonzales</li>
+  <li class="book-item" data-group="G">Isola by Allegra Goodman</li>
+  <li class="book-item" data-group="G">The Frequency of Living Things by Nick Fuller Googins</li>
+  <li class="book-item" data-group="G">Comfort in Darkness by Rickson Gracie</li>
+  <li class="book-item" data-group="G">Sons and Daughters by Chaim Grade</li>
+  <li class="book-item" data-group="G">The Blonde Dies First by Thomas Grattan</li>
+  <li class="book-item" data-group="G">The Book of George by Kate Greathead</li>
+  <li class="book-item" data-group="G">Framed by John Grisham</li>
+  <li class="book-item" data-group="G">Stronger by Michael Joseph Gross</li>
+  <li class="book-item" data-group="G">Daughters of the Occupation by Rachelle Grossman</li>
+  <li class="book-item" data-group="G">Cold Storage by Michael C. Grumley</li>
+  <li class="book-item" data-group="G">Cat&#x27;s People by Tanya Guerrero</li>
+  <li class="book-item" data-group="G">Poppy State by Myriam Gurba</li>
+  <li class="book-item" data-group="G">Ain&#x27;t It Funny by Gurevich</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="H">
-  <h3 class="group-title">H <span class="count">(31)</span></h3>
+<section class="group" id="H" data-group="H">
+  <h3 class="group-title">H <span class="count counts" id="count-H">(33)</span></h3>
   <ul class="books">
-  <li>So Gay for You by Leisha Hailey</li>
-  <li>The Uncanny Muse by David Hajdu</li>
-  <li>Bear Witness by Ross Halperin</li>
-  <li>What Will People Think? by Sara Hamdan</li>
-  <li>Deadbeat by Adam Hamdy</li>
-  <li>One-Star Romance by Laura Hankin</li>
-  <li>Lost in Austin by Alex Hannaford</li>
-  <li>Lost in Austin by Alex Hannaford</li>
-  <li>Magic Pill by Johann Hari</li>
-  <li>The Most Famous Girl in the World by Iman Hariri-Kia</li>
-  <li>The Most Famous Girl in the World by Iman Hariri-Kia</li>
-  <li>A Black Woman&#x27;s Guide to Getting Free by Tamara Winfrey Harris</li>
-  <li>The Martha&#x27;s Vineyard Beach and Book Club by Martha Haskell</li>
-  <li>The Song of the Blue Bottle Tree by India Hayford</li>
-  <li>The Good Boy by Stella Hayward</li>
-  <li>All&#x27;s Fair in Love and War by Virginia Heath</li>
-  <li>Look Before You Leap by Virginia Heath</li>
-  <li>Confidence is an Inside Job by Ashley Henriott</li>
-  <li>Open Haven by Sean Hewitt</li>
-  <li>Before I Forget by Tory Henwood Hoen</li>
-  <li>Manic Pixie Dream Ear by Jenny Holiday</li>
-  <li>Break Wide the Sea by Sara Holland</li>
-  <li>The Geographer&#x27;s Map to Romance by India Holton</li>
-  <li>The Stolen Child by Ann Hood</li>
-  <li>Life&#x27;s Short, Talk Fast by Ann Hood</li>
-  <li>The Killing Fields of East New York by Stacy Horn</li>
-  <li>The Starlight Heir by Amalie Howard</li>
-  <li>The Painter&#x27;s Daughters by Emily Howes</li>
-  <li>The Cold Light of Day by Anna Lee Huber</li>
-  <li>Make Believe by Victoria Hutmus</li>
-  <li>The Family Recipe by Carolyn Huynh</li>
+  <li class="book-item" data-group="H">Final Orbit by Chris Hadfield</li>
+  <li class="book-item" data-group="H">So Gay for You by Leisha Hailey</li>
+  <li class="book-item" data-group="H">The Uncanny Muse by David Hajdu</li>
+  <li class="book-item" data-group="H">Bear Witness by Ross Halperin</li>
+  <li class="book-item" data-group="H">What Will People Think? by Sara Hamdan</li>
+  <li class="book-item" data-group="H">Deadbeat by Adam Hamdy</li>
+  <li class="book-item" data-group="H">One-Star Romance by Laura Hankin</li>
+  <li class="book-item" data-group="H">Lost in Austin by Alex Hannaford</li>
+  <li class="book-item" data-group="H">Lost in Austin by Alex Hannaford</li>
+  <li class="book-item" data-group="H">Magic Pill by Johann Hari</li>
+  <li class="book-item" data-group="H">The Most Famous Girl in the World by Iman Hariri-Kia</li>
+  <li class="book-item" data-group="H">The Most Famous Girl in the World by Iman Hariri-Kia</li>
+  <li class="book-item" data-group="H">A Black Woman&#x27;s Guide to Getting Free by Tamara Winfrey Harris</li>
+  <li class="book-item" data-group="H">The Martha&#x27;s Vineyard Beach and Book Club by Martha Haskell</li>
+  <li class="book-item" data-group="H">The Song of the Blue Bottle Tree by India Hayford</li>
+  <li class="book-item" data-group="H">The Good Boy by Stella Hayward</li>
+  <li class="book-item" data-group="H">All&#x27;s Fair in Love and War by Virginia Heath</li>
+  <li class="book-item" data-group="H">Look Before You Leap by Virginia Heath</li>
+  <li class="book-item" data-group="H">Simultaneous by Eric Heisserer</li>
+  <li class="book-item" data-group="H">Confidence is an Inside Job by Ashley Henriott</li>
+  <li class="book-item" data-group="H">Open Haven by Sean Hewitt</li>
+  <li class="book-item" data-group="H">Before I Forget by Tory Henwood Hoen</li>
+  <li class="book-item" data-group="H">Manic Pixie Dream Ear by Jenny Holiday</li>
+  <li class="book-item" data-group="H">Break Wide the Sea by Sara Holland</li>
+  <li class="book-item" data-group="H">The Geographer&#x27;s Map to Romance by India Holton</li>
+  <li class="book-item" data-group="H">Life&#x27;s Short, Talk Fast by Ann Hood</li>
+  <li class="book-item" data-group="H">The Stolen Child by Ann Hood</li>
+  <li class="book-item" data-group="H">The Killing Fields of East New York by Stacy Horn</li>
+  <li class="book-item" data-group="H">The Starlight Heir by Amalie Howard</li>
+  <li class="book-item" data-group="H">The Painter&#x27;s Daughters by Emily Howes</li>
+  <li class="book-item" data-group="H">The Cold Light of Day by Anna Lee Huber</li>
+  <li class="book-item" data-group="H">Make Believe by Victoria Hutmus</li>
+  <li class="book-item" data-group="H">The Family Recipe by Carolyn Huynh</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="I">
-  <h3 class="group-title">I <span class="count">(2)</span></h3>
+<section class="group" id="I" data-group="I">
+  <h3 class="group-title">I <span class="count counts" id="count-I">(5)</span></h3>
   <ul class="books">
-  <li>Eat Your Age by Ian K. Smith, M.D.</li>
-  <li>Eat Your Age by Ian K. Smith, M.D.</li>
+  <li class="book-item" data-group="I">Eat Your Age by Ian K. Smith, M.D.</li>
+  <li class="book-item" data-group="I">Eat Your Age by Ian K. Smith, M.D.</li>
+  <li class="book-item" data-group="I">The Spamalot Diaries by Eric Idle</li>
+  <li class="book-item" data-group="I">The Quiet Mother by Arnaldur Indridason</li>
+  <li class="book-item" data-group="I">Motherland by Julia Ioffe</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="J">
-  <h3 class="group-title">J <span class="count">(20)</span></h3>
+<section class="group" id="J" data-group="J">
+  <h3 class="group-title">J <span class="count counts" id="count-J">(24)</span></h3>
   <ul class="books">
-  <li>Anatomy of Desire by Dr. Emily Jamea</li>
-  <li>A Five-Letter Word for Love by Amy James</li>
-  <li>The Big Fix by Holly James</li>
-  <li>The Big Fix by Holly James</li>
-  <li>Peggy by Rebecca Godfrey with Leslie Jamison</li>
-  <li>Of Blood and Lightning by Micki Janais</li>
-  <li>Our Narrow Hiding Places by Kristopher Jansma</li>
-  <li>Mission: Invincible Marriage by Jason</li>
-  <li>The Death Mask by Iris Johansen</li>
-  <li>Deadly Ever After by Brittany Johnson</li>
-  <li>Scream With Me by Eleanor Johnson</li>
-  <li>The Borrowed Life of Frederick Fife by Anna Johnston</li>
-  <li>The Sandersons Fail Manhattan by Scott Johnston</li>
-  <li>The People&#x27;s Project by Saeed Jones</li>
-  <li>A Fire in the Sky by Sophie Jordan</li>
-  <li>Six Days in Bombay by Alka Joshi</li>
-  <li>The Headache by Tom Zeller Jr.</li>
-  <li>How the Boogeyman Became a Poet by Tony Keith Jr.</li>
-  <li>The Savage, Noble Death of Babs Dionne by Ron Currie Jr.</li>
-  <li>13 Months Haunted by Jimmy Juliano</li>
+  <li class="book-item" data-group="J">Anatomy of Desire by Dr. Emily Jamea</li>
+  <li class="book-item" data-group="J">A Five-Letter Word for Love by Amy James</li>
+  <li class="book-item" data-group="J">The Big Fix by Holly James</li>
+  <li class="book-item" data-group="J">The Big Fix by Holly James</li>
+  <li class="book-item" data-group="J">Peggy by Rebecca Godfrey with Leslie Jamison</li>
+  <li class="book-item" data-group="J">Of Blood and Lightning by Micki Janais</li>
+  <li class="book-item" data-group="J">Our Narrow Hiding Places by Kristopher Jansma</li>
+  <li class="book-item" data-group="J">Mission: Invincible Marriage by Jason</li>
+  <li class="book-item" data-group="J">The Death Mask by Iris Johansen</li>
+  <li class="book-item" data-group="J">Deadly Ever After by Brittany Johnson</li>
+  <li class="book-item" data-group="J">Scream With Me by Eleanor Johnson</li>
+  <li class="book-item" data-group="J">You Are the Detective: The Creeping Hand Murder by Maureen Johnson</li>
+  <li class="book-item" data-group="J">The Borrowed Life of Frederick Fife by Anna Johnston</li>
+  <li class="book-item" data-group="J">The Sandersons Fail Manhattan by Scott Johnston</li>
+  <li class="book-item" data-group="J">The People&#x27;s Project by Saeed Jones</li>
+  <li class="book-item" data-group="J">The People&#x27;s Project by Saeed Jones &amp; Maggie Smith</li>
+  <li class="book-item" data-group="J">A Fire in the Sky by Sophie Jordan</li>
+  <li class="book-item" data-group="J">A Scar in the Bone by Sophie Jordan</li>
+  <li class="book-item" data-group="J">Six Days in Bombay by Alka Joshi</li>
+  <li class="book-item" data-group="J">The Savage, Noble Death of Babs Dionne by Ron Currie Jr.</li>
+  <li class="book-item" data-group="J">The EL by Theodore C. Van Alst Jr.</li>
+  <li class="book-item" data-group="J">The Headache by Tom Zeller Jr.</li>
+  <li class="book-item" data-group="J">How the Boogeyman Became a Poet by Tony Keith Jr.</li>
+  <li class="book-item" data-group="J">13 Months Haunted by Jimmy Juliano</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="K">
-  <h3 class="group-title">K <span class="count">(22)</span></h3>
+<section class="group" id="K" data-group="K">
+  <h3 class="group-title">K <span class="count counts" id="count-K">(24)</span></h3>
   <ul class="books">
-  <li>Eden Undone by Abbott Kahler</li>
-  <li>Eden Undone by Abbott Kahler</li>
-  <li>The Lion Women of Tehran by Marjan Kamali</li>
-  <li>They Went Another Way by Bruce Eric Kaplan</li>
-  <li>Heaven Help Us by Kasich</li>
-  <li>Someone Knows by Vi Keeland</li>
-  <li>Dinner with King Fu by Sam Kern</li>
-  <li>Tehrangeles by Porochista Khakpour</li>
-  <li>Amir and the Jinn Princess by M.T. Khan</li>
-  <li>Murder at Gulls Nest by Jess Kidd</li>
-  <li>City of Night Birds by Juhea Kim</li>
-  <li>This Part Is Silent by SJ Kim</li>
-  <li>A Sorceress Comes to Call by T. Kingfisher</li>
-  <li>Miskinterpretation by Ledia Kings</li>
-  <li>Hope for Cynics by Brian Klaas</li>
-  <li>Eurotrash by Christian Kracht</li>
-  <li>Angel Down by Daniel Kraus</li>
-  <li>Angel Down by Daniel Kraus</li>
-  <li>Here for a Good Time by Danya Kukafka</li>
-  <li>Nearly All the Men in Lagos Are Mad by Kuku</li>
-  <li>Creation Lake by Rachel Kushner</li>
-  <li>I&#x27;ll Love You Forever by Giae Kwon</li>
+  <li class="book-item" data-group="K">Eden Undone by Abbott Kahler</li>
+  <li class="book-item" data-group="K">Eden Undone by Abbott Kahler</li>
+  <li class="book-item" data-group="K">The Lion Women of Tehran by Marjan Kamali</li>
+  <li class="book-item" data-group="K">They Went Another Way by Bruce Eric Kaplan</li>
+  <li class="book-item" data-group="K">Heaven Help Us by Kasich</li>
+  <li class="book-item" data-group="K">Oddbody by Rose Keating</li>
+  <li class="book-item" data-group="K">Someone Knows by Vi Keeland</li>
+  <li class="book-item" data-group="K">Dinner with King Fu by Sam Kern</li>
+  <li class="book-item" data-group="K">Tehrangeles by Porochista Khakpour</li>
+  <li class="book-item" data-group="K">Amir and the Jinn Princess by M.T. Khan</li>
+  <li class="book-item" data-group="K">Murder at Gulls Nest by Jess Kidd</li>
+  <li class="book-item" data-group="K">City of Night Birds by Juhea Kim</li>
+  <li class="book-item" data-group="K">This Part Is Silent by SJ Kim</li>
+  <li class="book-item" data-group="K">A Sorceress Comes to Call by T. Kingfisher</li>
+  <li class="book-item" data-group="K">Miskinterpretation by Ledia Kings</li>
+  <li class="book-item" data-group="K">Hope for Cynics by Brian Klaas</li>
+  <li class="book-item" data-group="K">Articulate: A Deaf Memoir of Voice by Rachel Kolb</li>
+  <li class="book-item" data-group="K">Eurotrash by Christian Kracht</li>
+  <li class="book-item" data-group="K">Angel Down by Daniel Kraus</li>
+  <li class="book-item" data-group="K">Angel Down by Daniel Kraus</li>
+  <li class="book-item" data-group="K">Here for a Good Time by Danya Kukafka</li>
+  <li class="book-item" data-group="K">Nearly All the Men in Lagos Are Mad by Kuku</li>
+  <li class="book-item" data-group="K">Creation Lake by Rachel Kushner</li>
+  <li class="book-item" data-group="K">I&#x27;ll Love You Forever by Giae Kwon</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="L">
-  <h3 class="group-title">L <span class="count">(24)</span></h3>
+<section class="group" id="L" data-group="L">
+  <h3 class="group-title">L <span class="count counts" id="count-L">(27)</span></h3>
   <ul class="books">
-  <li>The River Is Waiting by Wally Lamb</li>
-  <li>My Day with the Cup by Jim Lang</li>
-  <li>On Her Own by Lapid</li>
-  <li>Happy Wife by Meredith Lavender</li>
-  <li>The Uptown Local by Cory Leadbeater</li>
-  <li>The Uptown Local by Cory Leadbeater</li>
-  <li>Nothing More of This Land by Joseph Lee</li>
-  <li>Tell Them You Lied by Laura Leffler</li>
-  <li>The Girl in the Walls by Evan Leikam</li>
-  <li>Lloyd McNeil&#x27;s Last Ride by Will Leitch</li>
-  <li>Everything and Nothing at Once by Joel Leon</li>
-  <li>Red Dead&#x27;s History by Betsy Lerner</li>
-  <li>ohn &amp; Paul by Ian Leslie</li>
-  <li>ohn &amp; Paul by Ian Leslie</li>
-  <li>How to Fall in Love in a Time of Unnameable Disaster by Muriel Leung</li>
-  <li>That&#x27;s All I Know by Elisa Levi</li>
-  <li>A Jewel in the Crown by David Lewis</li>
-  <li>Guatemalan Rhapsody by Jared Lewis</li>
-  <li>Uncanny Valley Girls by Zefyr Lisowski</li>
-  <li>The Broken Rung by Ellery Lloyd</li>
-  <li>Adult Children of Borderline Parents by Lobel</li>
-  <li>Old King by Maxim Loskutoff</li>
-  <li>Spitting Gold by Carmella Lowkis</li>
-  <li>Sike by Fred Lunzer</li>
+  <li class="book-item" data-group="L">The Dead of Summer by La Sala</li>
+  <li class="book-item" data-group="L">The River Is Waiting by Wally Lamb</li>
+  <li class="book-item" data-group="L">My Day with the Cup by Jim Lang</li>
+  <li class="book-item" data-group="L">On Her Own by Lapid</li>
+  <li class="book-item" data-group="L">Janae Sanders&#x27; Second Time Around by LaQuette</li>
+  <li class="book-item" data-group="L">House of Rayne by Harley Laroux</li>
+  <li class="book-item" data-group="L">Happy Wife by Meredith Lavender</li>
+  <li class="book-item" data-group="L">The Uptown Local by Cory Leadbeater</li>
+  <li class="book-item" data-group="L">The Uptown Local by Cory Leadbeater</li>
+  <li class="book-item" data-group="L">Nothing More of This Land by Joseph Lee</li>
+  <li class="book-item" data-group="L">Tell Them You Lied by Laura Leffler</li>
+  <li class="book-item" data-group="L">The Girl in the Walls by Evan Leikam</li>
+  <li class="book-item" data-group="L">Lloyd McNeil&#x27;s Last Ride by Will Leitch</li>
+  <li class="book-item" data-group="L">Everything and Nothing at Once by Joel Leon</li>
+  <li class="book-item" data-group="L">Red Dead&#x27;s History by Betsy Lerner</li>
+  <li class="book-item" data-group="L">ohn &amp; Paul by Ian Leslie</li>
+  <li class="book-item" data-group="L">ohn &amp; Paul by Ian Leslie</li>
+  <li class="book-item" data-group="L">How to Fall in Love in a Time of Unnameable Disaster by Muriel Leung</li>
+  <li class="book-item" data-group="L">That&#x27;s All I Know by Elisa Levi</li>
+  <li class="book-item" data-group="L">A Jewel in the Crown by David Lewis</li>
+  <li class="book-item" data-group="L">Guatemalan Rhapsody by Jared Lewis</li>
+  <li class="book-item" data-group="L">Uncanny Valley Girls by Zefyr Lisowski</li>
+  <li class="book-item" data-group="L">The Broken Rung by Ellery Lloyd</li>
+  <li class="book-item" data-group="L">Adult Children of Borderline Parents by Lobel</li>
+  <li class="book-item" data-group="L">Old King by Maxim Loskutoff</li>
+  <li class="book-item" data-group="L">Spitting Gold by Carmella Lowkis</li>
+  <li class="book-item" data-group="L">Sike by Fred Lunzer</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="M">
-  <h3 class="group-title">M <span class="count">(30)</span></h3>
+<section class="group" id="M" data-group="M">
+  <h3 class="group-title">M <span class="count counts" id="count-M">(35)</span></h3>
   <ul class="books">
-  <li>Gold Coast Dilemma by Nana Malone</li>
-  <li>Codebreaker by Jay Martel</li>
-  <li>Dead of Summer by Jessa Maxwell</li>
-  <li>The Seventh Floor by David McCloskey</li>
-  <li>Cover Story by Mariah McFarlane</li>
-  <li>Friends of the Museum by Heather McGowan</li>
-  <li>The Museum of Friends by McGowan</li>
-  <li>Proof by Beverley McLachlin</li>
-  <li>Life After Doom by Brian D. McLaren</li>
-  <li>No Miss Spangler or Wonderful News by Annie McQuaid</li>
-  <li>The Autoimmune Cure by Sara Szal Gottfried MD</li>
-  <li>Florenzar by Phil Melanson</li>
-  <li>Binder Punk Jeff by Desideria Mesa</li>
-  <li>American Bulk by Emily Mester</li>
-  <li>They Will Tell the World It&#x27;s Yours by Anna Michael</li>
-  <li>Poet in the New World by Czeslaw Milosz</li>
-  <li>An Affair by Giles Milton</li>
-  <li>The Stalin Affair by Giles Milton</li>
-  <li>We Would Never by Tova Mirvis</li>
-  <li>Things Become Other Things by Craig Mod</li>
-  <li>Mansion Beach by Meg Mitchell Moore</li>
-  <li>Maria by Michelle Moran</li>
-  <li>The Lost Voice by Greta Morgan</li>
-  <li>What in the World?! by Leanne Morgan</li>
-  <li>What in the World?! by Leanne Morgan</li>
-  <li>The Bane Witch by Ava Morgyn</li>
-  <li>What It&#x27;s Like in Words by Eliza Moss</li>
-  <li>What It&#x27;s Like in Words by Eliza Moss</li>
-  <li>A Sky of Emerald Stars by A.K. Mulford</li>
-  <li>Harlem Rhapsody by Victoria Christopher Murray</li>
+  <li class="book-item" data-group="M">Gold Coast Dilemma by Nana Malone</li>
+  <li class="book-item" data-group="M">Nature and the Mind by Marc G. Berman, Ph.D.</li>
+  <li class="book-item" data-group="M">Codebreaker by Jay Martel</li>
+  <li class="book-item" data-group="M">Dead of Summer by Jessa Maxwell</li>
+  <li class="book-item" data-group="M">An Academic Affair by Jodi McAlister</li>
+  <li class="book-item" data-group="M">Under a Fire-Red Sky by Geraldine McCaughrean</li>
+  <li class="book-item" data-group="M">The Seventh Floor by David McCloskey</li>
+  <li class="book-item" data-group="M">The Last Spirits of Manhattan by John A. McDermott</li>
+  <li class="book-item" data-group="M">Cover Story by Mariah McFarlane</li>
+  <li class="book-item" data-group="M">Friends of the Museum by Heather McGowan</li>
+  <li class="book-item" data-group="M">The Museum of Friends by McGowan</li>
+  <li class="book-item" data-group="M">Proof by Beverley McLachlin</li>
+  <li class="book-item" data-group="M">Life After Doom by Brian D. McLaren</li>
+  <li class="book-item" data-group="M">No Miss Spangler or Wonderful News by Annie McQuaid</li>
+  <li class="book-item" data-group="M">The Autoimmune Cure by Sara Szal Gottfried MD</li>
+  <li class="book-item" data-group="M">Florenzar by Phil Melanson</li>
+  <li class="book-item" data-group="M">Binder Punk Jeff by Desideria Mesa</li>
+  <li class="book-item" data-group="M">American Bulk by Emily Mester</li>
+  <li class="book-item" data-group="M">They Will Tell the World It&#x27;s Yours by Anna Michael</li>
+  <li class="book-item" data-group="M">Poet in the New World by Czeslaw Milosz</li>
+  <li class="book-item" data-group="M">An Affair by Giles Milton</li>
+  <li class="book-item" data-group="M">The Stalin Affair by Giles Milton</li>
+  <li class="book-item" data-group="M">We Would Never by Tova Mirvis</li>
+  <li class="book-item" data-group="M">Things Become Other Things by Craig Mod</li>
+  <li class="book-item" data-group="M">Mansion Beach by Meg Mitchell Moore</li>
+  <li class="book-item" data-group="M">Maria by Michelle Moran</li>
+  <li class="book-item" data-group="M">The Lost Voice by Greta Morgan</li>
+  <li class="book-item" data-group="M">What in the World?! by Leanne Morgan</li>
+  <li class="book-item" data-group="M">What in the World?! by Leanne Morgan</li>
+  <li class="book-item" data-group="M">The Bane Witch by Ava Morgyn</li>
+  <li class="book-item" data-group="M">What It&#x27;s Like in Words by Eliza Moss</li>
+  <li class="book-item" data-group="M">What It&#x27;s Like in Words by Eliza Moss</li>
+  <li class="book-item" data-group="M">A Sky of Emerald Stars by A.K. Mulford</li>
+  <li class="book-item" data-group="M">Harlem Rhapsody by Victoria Christopher Murray</li>
+  <li class="book-item" data-group="M">Brady vs. Belichick by Gary Myers</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="N">
-  <h3 class="group-title">N <span class="count">(8)</span></h3>
+<section class="group" id="N" data-group="N">
+  <h3 class="group-title">N <span class="count counts" id="count-N">(9)</span></h3>
   <ul class="books">
-  <li>The Murder of Mr. Ma by John Shen Yen Nee</li>
-  <li>Bite by Bite by Aimee Nezhukumatathil</li>
-  <li>Anzu and the Realm of Darkness by Mai K. Nguyen</li>
-  <li>The Shakespeare Secret by D.J. Nix</li>
-  <li>The Ripple Effect by Maggie North</li>
-  <li>How Leaders Learn by Novak</li>
-  <li>If Only I Had Told Her by Laura Nowlin</li>
-  <li>Cue the Sun! by Emily Nussbaum</li>
+  <li class="book-item" data-group="N">The Murder of Mr. Ma by John Shen Yen Nee</li>
+  <li class="book-item" data-group="N">Bite by Bite by Aimee Nezhukumatathil</li>
+  <li class="book-item" data-group="N">Anzu and the Realm of Darkness by Mai K. Nguyen</li>
+  <li class="book-item" data-group="N">The Shakespeare Secret by D.J. Nix</li>
+  <li class="book-item" data-group="N">We Survived the Night by Julian Brave NoiseCat</li>
+  <li class="book-item" data-group="N">The Ripple Effect by Maggie North</li>
+  <li class="book-item" data-group="N">How Leaders Learn by Novak</li>
+  <li class="book-item" data-group="N">If Only I Had Told Her by Laura Nowlin</li>
+  <li class="book-item" data-group="N">Cue the Sun! by Emily Nussbaum</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="O">
-  <h3 class="group-title">O <span class="count">(5)</span></h3>
+<section class="group" id="O" data-group="O">
+  <h3 class="group-title">O <span class="count counts" id="count-O">(6)</span></h3>
   <ul class="books">
-  <li>A Hundred Vicious Turns by Lee Paige O&#x27;Brien</li>
-  <li>The Naming of the Birds by Paraic O&#x27;Donnell</li>
-  <li>Blessings and Disasters by Alexis Okeowo</li>
-  <li>Who I Always Was by Theresa Okokon</li>
-  <li>Pride and Joy by Louisa Onomé</li>
+  <li class="book-item" data-group="O">A Hundred Vicious Turns by Lee Paige O&#x27;Brien</li>
+  <li class="book-item" data-group="O">The Naming of the Birds by Paraic O&#x27;Donnell</li>
+  <li class="book-item" data-group="O">Blessings and Disasters by Alexis Okeowo</li>
+  <li class="book-item" data-group="O">Who I Always Was by Theresa Okokon</li>
+  <li class="book-item" data-group="O">The Lodge by Kayla Olson</li>
+  <li class="book-item" data-group="O">Pride and Joy by Louisa Onomé</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="P">
-  <h3 class="group-title">P <span class="count">(16)</span></h3>
+<section class="group" id="P" data-group="P">
+  <h3 class="group-title">P <span class="count counts" id="count-P">(16)</span></h3>
   <ul class="books">
-  <li>Our Beautiful Boys by Sameer Pandya</li>
-  <li>Thomas, Lust, and Glory by Estelle Pannec</li>
-  <li>First Wife&#x27;s Shadow by Adele Parks</li>
-  <li>Munichs by David Peace</li>
-  <li>The Rivals by Jane Pek</li>
-  <li>Overdue by Stephanie Perkins</li>
-  <li>Black Power Scoreboard by Andrew M. Perry</li>
-  <li>Finistère by Fritz Peters</li>
-  <li>The Night Is Defying by Chloe C. Peñaranda</li>
-  <li>The Lost Queen by Ambee Phan</li>
-  <li>Adventures in the Louvre by Elaine Phelan</li>
-  <li>Everyone Is Lying to You by Jo Piazza</li>
-  <li>The Shadowed Land by Signe Pike</li>
-  <li>If You Love It, Let It Kill You by Hannah Pittard</li>
-  <li>How to Age Disgracefully by Clare Pooley</li>
-  <li>A Treachery of Swans by A.B. Poranek</li>
+  <li class="book-item" data-group="P">Our Beautiful Boys by Sameer Pandya</li>
+  <li class="book-item" data-group="P">Thomas, Lust, and Glory by Estelle Pannec</li>
+  <li class="book-item" data-group="P">First Wife&#x27;s Shadow by Adele Parks</li>
+  <li class="book-item" data-group="P">Munichs by David Peace</li>
+  <li class="book-item" data-group="P">The Rivals by Jane Pek</li>
+  <li class="book-item" data-group="P">Overdue by Stephanie Perkins</li>
+  <li class="book-item" data-group="P">Black Power Scoreboard by Andrew M. Perry</li>
+  <li class="book-item" data-group="P">Finistère by Fritz Peters</li>
+  <li class="book-item" data-group="P">The Night Is Defying by Chloe C. Peñaranda</li>
+  <li class="book-item" data-group="P">The Lost Queen by Ambee Phan</li>
+  <li class="book-item" data-group="P">Adventures in the Louvre by Elaine Phelan</li>
+  <li class="book-item" data-group="P">Everyone Is Lying to You by Jo Piazza</li>
+  <li class="book-item" data-group="P">The Shadowed Land by Signe Pike</li>
+  <li class="book-item" data-group="P">If You Love It, Let It Kill You by Hannah Pittard</li>
+  <li class="book-item" data-group="P">How to Age Disgracefully by Clare Pooley</li>
+  <li class="book-item" data-group="P">A Treachery of Swans by A.B. Poranek</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="R">
-  <h3 class="group-title">R <span class="count">(35)</span></h3>
+<section class="group" id="R" data-group="R">
+  <h3 class="group-title">R <span class="count counts" id="count-R">(36)</span></h3>
   <ul class="books">
-  <li>Daniel, Deconstructed by James Ramos</li>
-  <li>The Legend of Meneka by Kritika H. Rao</li>
-  <li>The Silver Forest Book One by J.D. Rasch</li>
-  <li>HBCU Made by Ayesha Rascoe</li>
-  <li>Black Pill by Elle Reeve</li>
-  <li>How to Share an Egg by Bonny Reichert</li>
-  <li>Good People by Reilich</li>
-  <li>Good People by Reilich</li>
-  <li>Narcissistic Abuse by Vanessa M. Reiser</li>
-  <li>Endlings by Maria Reva</li>
-  <li>My Mother Cursed My Name by Anamely Salgado Reyes</li>
-  <li>If You Were My Daughter by Marianne Richmond</li>
-  <li>The Last Light Over Oslo by Alix Rickloff</li>
-  <li>Remote by Eric Rickstad</li>
-  <li>The Extraordinary Disappointments of Leopold Berry by Ransom Riggs</li>
-  <li>Life, &amp; Deaths, &amp; Giants by Ron Rinado</li>
-  <li>The Glass Man by Matt Riordan</li>
-  <li>While the Getting Is Good by Matt Riordan</li>
-  <li>The Seven Rings by Nora Roberts</li>
-  <li>The Townsend Family Recipe for Disaster by Shauna Robinson</li>
-  <li>The Darwinian Trap by Kristian Romm</li>
-  <li>Jane Austen&#x27;s Bookshelf by Rebecca Romney</li>
-  <li>Jane Austen&#x27;s Bookshelf by Rebecca Romney</li>
-  <li>Ambition Monster by Jennifer Romolini</li>
-  <li>The Seemingly Impossible Love Life of Amanda Dean by Ann Rose</li>
-  <li>Pomona Atton Can Solve a Murder by Bellamy Rose</li>
-  <li>Midnight in the Garden of the Wayward Girls by Judith Rosell</li>
-  <li>The Extinction of Experience by Christine Rosen</li>
-  <li>Because We Must by Annalee Rosholt</li>
-  <li>All Things Are Too Small by Becca Rothfeld</li>
-  <li>Finding Grace by Loretta Rothschild</li>
-  <li>What Is Wrong With You? by Paul Rudnick</li>
-  <li>Fifty-Three Days on Starvation Island by John Rumming</li>
-  <li>Bring the House Down by Charlotte Runcie</li>
-  <li>Godwinks for Moms by Squire Rushnell</li>
+  <li class="book-item" data-group="R">Daniel, Deconstructed by James Ramos</li>
+  <li class="book-item" data-group="R">The Legend of Meneka by Kritika H. Rao</li>
+  <li class="book-item" data-group="R">The Silver Forest Book One by J.D. Rasch</li>
+  <li class="book-item" data-group="R">HBCU Made by Ayesha Rascoe</li>
+  <li class="book-item" data-group="R">Black Pill by Elle Reeve</li>
+  <li class="book-item" data-group="R">How to Share an Egg by Bonny Reichert</li>
+  <li class="book-item" data-group="R">Good People by Reilich</li>
+  <li class="book-item" data-group="R">Good People by Reilich</li>
+  <li class="book-item" data-group="R">Narcissistic Abuse by Vanessa M. Reiser</li>
+  <li class="book-item" data-group="R">Endlings by Maria Reva</li>
+  <li class="book-item" data-group="R">My Mother Cursed My Name by Anamely Salgado Reyes</li>
+  <li class="book-item" data-group="R">If You Were My Daughter by Marianne Richmond</li>
+  <li class="book-item" data-group="R">The Last Light Over Oslo by Alix Rickloff</li>
+  <li class="book-item" data-group="R">Remote by Eric Rickstad</li>
+  <li class="book-item" data-group="R">The Extraordinary Disappointments of Leopold Berry by Ransom Riggs</li>
+  <li class="book-item" data-group="R">Life, &amp; Deaths, &amp; Giants by Ron Rinado</li>
+  <li class="book-item" data-group="R">The Glass Man by Matt Riordan</li>
+  <li class="book-item" data-group="R">While the Getting Is Good by Matt Riordan</li>
+  <li class="book-item" data-group="R">The Seven Rings by Nora Roberts</li>
+  <li class="book-item" data-group="R">The Townsend Family Recipe for Disaster by Shauna Robinson</li>
+  <li class="book-item" data-group="R">The Darwinian Trap by Kristian Romm</li>
+  <li class="book-item" data-group="R">Jane Austen&#x27;s Bookshelf by Rebecca Romney</li>
+  <li class="book-item" data-group="R">Jane Austen&#x27;s Bookshelf by Rebecca Romney</li>
+  <li class="book-item" data-group="R">Ambition Monster by Jennifer Romolini</li>
+  <li class="book-item" data-group="R">The Seemingly Impossible Love Life of Amanda Dean by Ann Rose</li>
+  <li class="book-item" data-group="R">Pomona Atton Can Solve a Murder by Bellamy Rose</li>
+  <li class="book-item" data-group="R">Midnight in the Garden of the Wayward Girls by Judith Rosell</li>
+  <li class="book-item" data-group="R">The Extinction of Experience by Christine Rosen</li>
+  <li class="book-item" data-group="R">Because We Must by Annalee Rosholt</li>
+  <li class="book-item" data-group="R">All Things Are Too Small by Becca Rothfeld</li>
+  <li class="book-item" data-group="R">Finding Grace by Loretta Rothschild</li>
+  <li class="book-item" data-group="R">What Is Wrong With You? by Paul Rudnick</li>
+  <li class="book-item" data-group="R">Fifty-Three Days on Starvation Island by John Rumming</li>
+  <li class="book-item" data-group="R">Bring the House Down by Charlotte Runcie</li>
+  <li class="book-item" data-group="R">Godwinks for Moms by Squire Rushnell</li>
+  <li class="book-item" data-group="R">A Curious Kind of Magic by Mara Rutherford</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="S">
-  <h3 class="group-title">S <span class="count">(35)</span></h3>
+<section class="group" id="S" data-group="S">
+  <h3 class="group-title">S <span class="count counts" id="count-S">(39)</span></h3>
   <ul class="books">
-  <li>One Last Breath by Ginny Myers Sain</li>
-  <li>The Witch of Whispervale by R.A. Salvatore</li>
-  <li>We&#x27;ve Decided to Go in a Different Direction by Tessa Sanchez</li>
-  <li>Committed by Suzanne Scanlon</li>
-  <li>The Slow Road North by Rosie Schaap</li>
-  <li>Town &amp; Country by Brian Schaefer</li>
-  <li>How Sondheim Can Change Your Life by Richard Schoch</li>
-  <li>Free Ride by Noraly Schoenmaker</li>
-  <li>Over Work by Brigid Schulte</li>
-  <li>Stillwater by Tanya Scott</li>
-  <li>Open Minded by Chloe Seager</li>
-  <li>Go Higher by Big Sean</li>
-  <li>Go Higher by Big Sean</li>
-  <li>59 Minutes by Holly Seddon</li>
-  <li>A World Made New by Paul Selig</li>
-  <li>Our Secrets Were Safe by Laura Shepherd-Robinson</li>
-  <li>Selling Sexy by Lauren Sherman</li>
-  <li>Making Room by Carl Siciliano</li>
-  <li>The Systems Leader by Robert E. Siegel</li>
-  <li>Magic in the Air by Mike Sielski</li>
-  <li>The Why is Everything by Michael Silver</li>
-  <li>Ready to Score by Jodie Slaughter</li>
-  <li>Dear Writer by Maggie Smith</li>
-  <li>Away Game by Smith</li>
-  <li>Black Shield Maiden by Willow Smith</li>
-  <li>Your Name Is Not Anxious by Stephanie Dowrick, PhD</li>
-  <li>The Original by Nell Stevens</li>
-  <li>Everyone This Christmas Has a Secret by Benjamin Stevenson</li>
-  <li>Anji Kills a King by M.T. Stevenson</li>
-  <li>Behooved by M.T. Stevenson</li>
-  <li>The Friendship Fling by Georgia Stone</li>
-  <li>The Dunning-Kruger Effect by Andrés Stoopendaal</li>
-  <li>Tell Me Everything by Elizabeth Strout</li>
-  <li>My Other Heart by Emma Naomi Sturmer</li>
-  <li>Optional Practical Training by Shubha Sunder</li>
+  <li class="book-item" data-group="S">One Last Breath by Ginny Myers Sain</li>
+  <li class="book-item" data-group="S">The Witch of Whispervale by R.A. Salvatore</li>
+  <li class="book-item" data-group="S">We&#x27;ve Decided to Go in a Different Direction by Tessa Sanchez</li>
+  <li class="book-item" data-group="S">Committed by Suzanne Scanlon</li>
+  <li class="book-item" data-group="S">The Slow Road North by Rosie Schaap</li>
+  <li class="book-item" data-group="S">Town &amp; Country by Brian Schaefer</li>
+  <li class="book-item" data-group="S">How Sondheim Can Change Your Life by Richard Schoch</li>
+  <li class="book-item" data-group="S">Free Ride by Noraly Schoenmaker</li>
+  <li class="book-item" data-group="S">Over Work by Brigid Schulte</li>
+  <li class="book-item" data-group="S">Royal Spin by Omid Scobie &amp; Robin Benway</li>
+  <li class="book-item" data-group="S">Stillwater by Tanya Scott</li>
+  <li class="book-item" data-group="S">Open Minded by Chloe Seager</li>
+  <li class="book-item" data-group="S">Go Higher by Big Sean</li>
+  <li class="book-item" data-group="S">Go Higher by Big Sean</li>
+  <li class="book-item" data-group="S">The Woman&#x27;s Orchestra of Auschwitz by Anne Sebba</li>
+  <li class="book-item" data-group="S">59 Minutes by Holly Seddon</li>
+  <li class="book-item" data-group="S">59 Minutes by Holly Seddon</li>
+  <li class="book-item" data-group="S">A World Made New by Paul Selig</li>
+  <li class="book-item" data-group="S">Our Secrets Were Safe by Laura Shepherd-Robinson</li>
+  <li class="book-item" data-group="S">Selling Sexy by Lauren Sherman</li>
+  <li class="book-item" data-group="S">Making Room by Carl Siciliano</li>
+  <li class="book-item" data-group="S">The Systems Leader by Robert E. Siegel</li>
+  <li class="book-item" data-group="S">Magic in the Air by Mike Sielski</li>
+  <li class="book-item" data-group="S">The Why is Everything by Michael Silver</li>
+  <li class="book-item" data-group="S">Ready to Score by Jodie Slaughter</li>
+  <li class="book-item" data-group="S">Dear Writer by Maggie Smith</li>
+  <li class="book-item" data-group="S">Away Game by Smith</li>
+  <li class="book-item" data-group="S">Black Shield Maiden by Willow Smith</li>
+  <li class="book-item" data-group="S">The Only Sound Is the Wind by Pascha Sotolongo</li>
+  <li class="book-item" data-group="S">Your Name Is Not Anxious by Stephanie Dowrick, PhD</li>
+  <li class="book-item" data-group="S">The Original by Nell Stevens</li>
+  <li class="book-item" data-group="S">Everyone This Christmas Has a Secret by Benjamin Stevenson</li>
+  <li class="book-item" data-group="S">Anji Kills a King by M.T. Stevenson</li>
+  <li class="book-item" data-group="S">Behooved by M.T. Stevenson</li>
+  <li class="book-item" data-group="S">The Friendship Fling by Georgia Stone</li>
+  <li class="book-item" data-group="S">The Dunning-Kruger Effect by Andrés Stoopendaal</li>
+  <li class="book-item" data-group="S">Tell Me Everything by Elizabeth Strout</li>
+  <li class="book-item" data-group="S">My Other Heart by Emma Naomi Sturmer</li>
+  <li class="book-item" data-group="S">Optional Practical Training by Shubha Sunder</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="T">
-  <h3 class="group-title">T <span class="count">(10)</span></h3>
+<section class="group" id="T" data-group="T">
+  <h3 class="group-title">T <span class="count counts" id="count-T">(12)</span></h3>
   <ul class="books">
-  <li>Tilda Is Visible by Jane Tara</li>
-  <li>Shakespeare&#x27;s Sisters by Ramie Targoff</li>
-  <li>The Otherwhere Post by Emily Taylor</li>
-  <li>Sour Cherry by Natalia Theodoridou</li>
-  <li>Sour Cherry by Natalia Theodoridou</li>
-  <li>Can&#x27;t Spell Treason Without Tea by Rebecca Thorne</li>
-  <li>Worth Fighting For by S. J. Tjinto</li>
-  <li>The Mango Murders by Lucy Treloar</li>
-  <li>Murder in Pitigliano by Camilla Trinchieri</li>
-  <li>Long Island by Colm Tóibín</li>
+  <li class="book-item" data-group="T">Tilda Is Visible by Jane Tara</li>
+  <li class="book-item" data-group="T">Shakespeare&#x27;s Sisters by Ramie Targoff</li>
+  <li class="book-item" data-group="T">The Otherwhere Post by Emily Taylor</li>
+  <li class="book-item" data-group="T">Sour Cherry by Natalia Theodoridou</li>
+  <li class="book-item" data-group="T">Sour Cherry by Natalia Theodoridou</li>
+  <li class="book-item" data-group="T">Can&#x27;t Spell Treason Without Tea by Rebecca Thorne</li>
+  <li class="book-item" data-group="T">Worth Fighting For by S. J. Tjinto</li>
+  <li class="book-item" data-group="T">The Mango Murders by Lucy Treloar</li>
+  <li class="book-item" data-group="T">Murder in Pitigliano by Camilla Trinchieri</li>
+  <li class="book-item" data-group="T">Lost Souls Meet Under a Full Moon by Mizuki Tsujimura</li>
+  <li class="book-item" data-group="T">10 Rules for Raising Kids in a High-Tech World by Jean Twenge</li>
+  <li class="book-item" data-group="T">Long Island by Colm Tóibín</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="U">
-  <h3 class="group-title">U <span class="count">(3)</span></h3>
+<section class="group" id="U" data-group="U">
+  <h3 class="group-title">U <span class="count counts" id="count-U">(3)</span></h3>
   <ul class="books">
-  <li>Run With the Wind by Mura First name unclear</li>
-  <li>The In-Between Bookstore by Edward Underhill</li>
-  <li>Wild Ground by Emily Usher</li>
+  <li class="book-item" data-group="U">Run With the Wind by Mura First name unclear</li>
+  <li class="book-item" data-group="U">The In-Between Bookstore by Edward Underhill</li>
+  <li class="book-item" data-group="U">Wild Ground by Emily Usher</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="V">
-  <h3 class="group-title">V <span class="count">(4)</span></h3>
+<section class="group" id="V" data-group="V">
+  <h3 class="group-title">V <span class="count counts" id="count-V">(5)</span></h3>
   <ul class="books">
-  <li>Letters from the Dead by Isabella Valeri</li>
-  <li>Searches by Vauhini Vara</li>
-  <li>The Original Daughter by Jeanann Verlee</li>
-  <li>The Almighty-er by Paul Vigna</li>
+  <li class="book-item" data-group="V">Letters from the Dead by Isabella Valeri</li>
+  <li class="book-item" data-group="V">The Dinner Party by Viola van de Sandt</li>
+  <li class="book-item" data-group="V">Searches by Vauhini Vara</li>
+  <li class="book-item" data-group="V">The Original Daughter by Jeanann Verlee</li>
+  <li class="book-item" data-group="V">The Almighty-er by Paul Vigna</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="W">
-  <h3 class="group-title">W <span class="count">(19)</span></h3>
+<section class="group" id="W" data-group="W">
+  <h3 class="group-title">W <span class="count counts" id="count-W">(19)</span></h3>
   <ul class="books">
-  <li>Girl in the Creek by Wendy N. Wagner</li>
-  <li>Aggregated Discontent by Harron Walker</li>
-  <li>The Strange Case of Jane O by Karen Thompson Walker</li>
-  <li>Order Out of Chaos by Scott Walker</li>
-  <li>The Mysterious Mr. Nakamoto by Benjamin Wallace</li>
-  <li>A Rage to Conquer by Michael Walsh</li>
-  <li>Nothing is Missing by Nicole Walters</li>
-  <li>The Mission by Jim Weaver</li>
-  <li>Stugotz&#x27;s Personal Record Book by Jon “Stugotz” Weiner</li>
-  <li>North to the Future by Ben Weissenbach</li>
-  <li>In Tongues by Wellington</li>
-  <li>Send Me by Jeff Wezler</li>
-  <li>Bitter Teas &amp; Honey by Ashley Whitaker</li>
-  <li>Desperate Deadly Widows by Hollan Whitte</li>
-  <li>The Pelican Child by Joy Williams</li>
-  <li>Beartooth by Callan Wink</li>
-  <li>Holy City by Henry Wise</li>
-  <li>Care and Feeding by Laurie Woolever</li>
-  <li>There&#x27;s Nothing Like This by Laurie Woolever</li>
+  <li class="book-item" data-group="W">Girl in the Creek by Wendy N. Wagner</li>
+  <li class="book-item" data-group="W">Aggregated Discontent by Harron Walker</li>
+  <li class="book-item" data-group="W">The Strange Case of Jane O by Karen Thompson Walker</li>
+  <li class="book-item" data-group="W">Order Out of Chaos by Scott Walker</li>
+  <li class="book-item" data-group="W">The Mysterious Mr. Nakamoto by Benjamin Wallace</li>
+  <li class="book-item" data-group="W">A Rage to Conquer by Michael Walsh</li>
+  <li class="book-item" data-group="W">Nothing is Missing by Nicole Walters</li>
+  <li class="book-item" data-group="W">The Mission by Jim Weaver</li>
+  <li class="book-item" data-group="W">Stugotz&#x27;s Personal Record Book by Jon “Stugotz” Weiner</li>
+  <li class="book-item" data-group="W">North to the Future by Ben Weissenbach</li>
+  <li class="book-item" data-group="W">In Tongues by Wellington</li>
+  <li class="book-item" data-group="W">Send Me by Jeff Wezler</li>
+  <li class="book-item" data-group="W">Bitter Teas &amp; Honey by Ashley Whitaker</li>
+  <li class="book-item" data-group="W">Desperate Deadly Widows by Hollan Whitte</li>
+  <li class="book-item" data-group="W">The Pelican Child by Joy Williams</li>
+  <li class="book-item" data-group="W">Beartooth by Callan Wink</li>
+  <li class="book-item" data-group="W">Holy City by Henry Wise</li>
+  <li class="book-item" data-group="W">Care and Feeding by Laurie Woolever</li>
+  <li class="book-item" data-group="W">There&#x27;s Nothing Like This by Laurie Woolever</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
 
-<section class="group" id="Y">
-  <h3 class="group-title">Y <span class="count">(6)</span></h3>
+<section class="group" id="Y" data-group="Y">
+  <h3 class="group-title">Y <span class="count counts" id="count-Y">(7)</span></h3>
   <ul class="books">
-  <li>Hamajang Chick by Makana Yamamoto</li>
-  <li>Sounds Like a Plan by Pamela Samuels Young</li>
-  <li>The Wisdom of Sheep by Rosamund Young</li>
-  <li>Because We Must by Youngblom</li>
-  <li>The Anti-Eldest Manifesto by Tiffany Yu</li>
-  <li>Butter by Asako Yuzuki</li>
+  <li class="book-item" data-group="Y">Hamajang Chick by Makana Yamamoto</li>
+  <li class="book-item" data-group="Y">Sounds Like a Plan by Pamela Samuels Young</li>
+  <li class="book-item" data-group="Y">The Wisdom of Sheep by Rosamund Young</li>
+  <li class="book-item" data-group="Y">Because We Must by Youngblom</li>
+  <li class="book-item" data-group="Y">Sunbirth by An Yu</li>
+  <li class="book-item" data-group="Y">The Anti-Eldest Manifesto by Tiffany Yu</li>
+  <li class="book-item" data-group="Y">Butter by Asako Yuzuki</li>
   </ul>
   <a class="back-to-top" href="#top" aria-label="Back to top">↑ Back to top</a>
 </section>
@@ -696,12 +789,59 @@ footer {
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+  const search = document.getElementById('search');
+  const clearBtn = document.getElementById('clear-search');
+  const totalSpan = document.getElementById('total-count');
+  const visibleSpan = document.getElementById('visible-count');
+  const sections = Array.from(document.querySelectorAll('section.group'));
+  const items = Array.from(document.querySelectorAll('li.book-item'));
+
+  const TOTAL = items.length;
+  totalSpan.textContent = TOTAL;
+
+  function normalize(s) {
+    return s.toLowerCase();
+  }
+
+  function applyFilter() {
+    const q = normalize(search.value || '');
+    let visible = 0;
+    // Hide/show items
+    items.forEach(li => {
+      const hit = !q || normalize(li.textContent).includes(q);
+      li.classList.toggle('hidden', !hit);
+      if (hit) visible++;
+    });
+    // Update per-section counts and hide empty sections
+    sections.forEach(sec => {
+      const group = sec.getAttribute('data-group');
+      const listItems = Array.from(sec.querySelectorAll('li.book-item'));
+      const visibleInGroup = listItems.filter(li => !li.classList.contains('hidden')).length;
+      const countEl = document.getElementById('count-' + group);
+      if (countEl) countEl.textContent = `(${visibleInGroup})`;
+      sec.classList.toggle('hidden', visibleInGroup === 0);
+    });
+    // Update visible total
+    visibleSpan.textContent = visible;
+  }
+
+  search.addEventListener('input', applyFilter);
+  clearBtn.addEventListener('click', function () {
+    search.value = '';
+    applyFilter();
+    search.focus();
+  });
+
+  // Smooth scroll for back-to-top links
   document.querySelectorAll('.back-to-top').forEach(function(a) {
     a.addEventListener('click', function(e) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   });
+
+  // Initialize visible count on load
+  applyFilter();
 });
 </script>
 
