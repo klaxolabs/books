@@ -7,13 +7,14 @@
 
 <style>
 :root {
-  --bg: #0f172a;
-  --card: #111827;
-  --text: #e5e7eb;
-  --muted: #9ca3af;
-  --accent: #60a5fa;
-  --link: #93c5fd;
-  --border: #1f2937;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+  --accent: #2563eb;
+  --link: #1d4ed8;
+  --border: #e5e7eb;
+  --shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.06);
 }
 * { box-sizing: border-box; }
 body {
@@ -22,32 +23,27 @@ body {
   color: var(--text);
   line-height: 1.6;
   margin: 0;
-  padding: 0 1rem 4rem;
+  padding: 0 1rem 3rem;
 }
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-#top { position: sticky; top: 0; height: 0; }
+.container { max-width: 1100px; margin: 0 auto; }
+#top-anchor { position: absolute; top: 0; }
 header {
   position: sticky;
   top: 0;
+  background: rgba(255,255,255,0.85);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
-  background: color-mix(in oklab, var(--bg) 85%, transparent);
   z-index: 10;
   border-bottom: 1px solid var(--border);
   margin: 0 -1rem 1rem;
-  padding: .8rem 1rem;
+  padding: .9rem 1rem;
 }
 header h1 {
   margin: 0;
   font-size: clamp(1.2rem, 1.1rem + 1vw, 1.8rem);
   font-weight: 700;
 }
-header .meta {
-  font-size: .95rem;
-  color: var(--muted);
-}
+header .meta { font-size: .95rem; color: var(--muted); }
 .alpha-nav {
   display: flex;
   flex-wrap: wrap;
@@ -57,56 +53,46 @@ header .meta {
 .alpha-nav a {
   text-decoration: none;
   border: 1px solid var(--border);
-  padding: .2rem .5rem;
-  border-radius: .45rem;
+  padding: .25rem .55rem;
+  border-radius: .55rem;
   color: var(--link);
+  background: #fff;
+  box-shadow: var(--shadow);
 }
 .alpha-nav a:hover {
   border-color: var(--accent);
-  color: white;
+  color: var(--accent);
 }
 section.group {
   margin: 2rem 0 0;
   padding-top: 1rem;
-  scroll-margin-top: 5.5rem; /* align with sticky header */
+  scroll-margin-top: 5.5rem; /* for sticky header */
   border-top: 1px dashed var(--border);
 }
 h3.group-title {
   margin: 0 0 .6rem;
   font-size: 1.6rem;
-  letter-spacing: .04em;
+  letter-spacing: .02em;
 }
-.group .count {
-  color: var(--muted);
-  font-size: .95rem;
-  margin-left: .3rem;
-}
-ul.books {
-  list-style: none;
-  padding: 0;
-  margin: .2rem 0 0;
-  columns: 1;
-  column-gap: 2rem;
-}
-@media (min-width: 700px) {
-  ul.books { columns: 2; }
-}
-@media (min-width: 1000px) {
-  ul.books { columns: 3; }
-}
+.group .count { color: var(--muted); font-size: .95rem; margin-left: .3rem; }
+ul.books { list-style: none; padding: 0; margin: .2rem 0 0; columns: 1; column-gap: 2rem; }
+@media (min-width: 700px) { ul.books { columns: 2; } }
+@media (min-width: 1000px) { ul.books { columns: 3; } }
 ul.books li {
   break-inside: avoid;
   margin: .25rem 0;
-  padding: .35rem .6rem;
-  background: color-mix(in oklab, var(--card) 88%, transparent);
+  padding: .45rem .7rem;
+  background: var(--card);
   border: 1px solid var(--border);
-  border-radius: .5rem;
+  border-radius: .6rem;
+  box-shadow: var(--shadow);
 }
 .back-to-top {
-  margin-top: .6rem;
+  margin-top: .7rem;
   display: inline-block;
   font-size: .9rem;
   color: var(--muted);
+  text-decoration: none;
 }
 .back-to-top:hover { color: var(--link); }
 footer {
@@ -119,13 +105,13 @@ footer {
 </style>
 
 <body>
-<a id="top"></a>
+<div id="top-anchor"></div>
 <div class="container">
-  <header>
+  <header id="top">
     <h1>ARCs — Grouped by Author (First Author Only)</h1>
     <div class="meta"><strong>Total books: 413</strong></div>
     <nav class="alpha-nav" aria-label="Alphabetical navigation">
-      <a href="#A">A</a> <a href="#B">B</a> <a href="#C">C</a> <a href="#D">D</a> <a href="#E">E</a> <a href="#F">F</a> <a href="#G">G</a> <a href="#H">H</a> <a href="#I">I</a> <a href="#J">J</a> <a href="#K">K</a> <a href="#L">L</a> <a href="#M">M</a> <a href="#N">N</a> <a href="#O">O</a> <a href="#P">P</a> <a href="#R">R</a> <a href="#S">S</a> <a href="#T">T</a> <a href="#U">U</a> <a href="#V">V</a> <a href="#W">W</a> <a href="#Y">Y</a>
+      <a href="#A" aria-label="Jump to group A">A</a> <a href="#B" aria-label="Jump to group B">B</a> <a href="#C" aria-label="Jump to group C">C</a> <a href="#D" aria-label="Jump to group D">D</a> <a href="#E" aria-label="Jump to group E">E</a> <a href="#F" aria-label="Jump to group F">F</a> <a href="#G" aria-label="Jump to group G">G</a> <a href="#H" aria-label="Jump to group H">H</a> <a href="#I" aria-label="Jump to group I">I</a> <a href="#J" aria-label="Jump to group J">J</a> <a href="#K" aria-label="Jump to group K">K</a> <a href="#L" aria-label="Jump to group L">L</a> <a href="#M" aria-label="Jump to group M">M</a> <a href="#N" aria-label="Jump to group N">N</a> <a href="#O" aria-label="Jump to group O">O</a> <a href="#P" aria-label="Jump to group P">P</a> <a href="#R" aria-label="Jump to group R">R</a> <a href="#S" aria-label="Jump to group S">S</a> <a href="#T" aria-label="Jump to group T">T</a> <a href="#U" aria-label="Jump to group U">U</a> <a href="#V" aria-label="Jump to group V">V</a> <a href="#W" aria-label="Jump to group W">W</a> <a href="#Y" aria-label="Jump to group Y">Y</a>
     </nav>
   </header>
 
@@ -707,5 +693,17 @@ footer {
     Generated from CSV. Each list item is “Title by Author” and reflects one physical copy.
   </footer>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.back-to-top').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+});
+</script>
+
 </body>
 </html>
