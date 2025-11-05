@@ -1,5 +1,5 @@
 # books
-Please email us at <i>books@klaxolabs.com</i> with questions regarding orders and books. <br> <br>
+
 All books listed are brand new & unread unless otherwise indicated. <br>
 We are happy to provide photos of the condition of books for serious inquiries. <br>
 
